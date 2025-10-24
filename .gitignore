@@ -1,0 +1,62 @@
+# Bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual environment
+venv/
+env/
+.venv/
+.env/
+
+# IDEs
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+.DS_Store
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# Pytest
+.cache
+
+# Distribution / Packaging
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Python Wheels
+*.whl
+
+# Coverage reports
+.coverage
+*.cover
+*.hypothesis/
+.tox/
+
+# Environment variable files
+.env
+*.env
+
+# Logs
+*.log
+
+# Migrations (if using Django or similar)
+migrations/
+
+# Configuration files for tools (e.g., PyCharm, VS Code)
+*.iml
+*.swp
+
+# Downloads
+.downloads/
+
+# Output
+.output/
+output/
+_output/
+
+.logs/

@@ -1,0 +1,572 @@
+{
+  "checksum": 2,
+  "partials": [
+    {
+      "id": "back",
+      "artwork": "front",
+      "piece": "back",
+      "steps": [
+        {
+          "action": "mask",
+          "data": "back-1.png"
+        },
+        {
+          "action": "crop",
+          "data": {
+            "left": 6382,
+            "top": 2227,
+            "width": 2607,
+            "height": 2846
+          }
+        },
+        {
+          "action": "rotate",
+          "data": 180
+        },
+        {
+          "action": "resize",
+          "data": {
+            "width": 2483,
+            "height": 2711
+          }
+        }
+      ],
+      "location": {
+        "left": 54,
+        "top": 60
+      }
+    },
+    {
+      "id": "front-1",
+      "artwork": "front",
+      "piece": "front-1",
+      "steps": [
+        {
+          "action": "mask",
+          "data": "front-1.png"
+        },
+        {
+          "action": "crop",
+          "data": {
+            "left": 3000,
+            "top": 2206,
+            "width": 1404,
+            "height": 2858
+          }
+        },
+        {
+          "action": "rotate",
+          "data": 180
+        },
+        {
+          "action": "resize",
+          "data": {
+            "width": 1337,
+            "height": 2721
+          }
+        }
+      ],
+      "location": {
+        "left": 4864,
+        "top": 60
+      }
+    },
+    {
+      "id": "front-2",
+      "artwork": "front",
+      "piece": "front-2",
+      "steps": [
+        {
+          "action": "mask",
+          "data": "front-2.png"
+        },
+        {
+          "action": "crop",
+          "data": {
+            "left": 4201,
+            "top": 2208,
+            "width": 1403,
+            "height": 2856
+          }
+        },
+        {
+          "action": "resize",
+          "data": {
+            "width": 1336,
+            "height": 2720
+          }
+        }
+      ],
+      "location": {
+        "left": 2136,
+        "top": 2223
+      }
+    },
+    {
+      "id": "flap-1",
+      "artwork": "front",
+      "piece": "flap-1",
+      "steps": [
+        {
+          "action": "mask",
+          "data": "front-11.png"
+        },
+        {
+          "action": "crop",
+          "data": {
+            "left": 3234,
+            "top": 3994,
+            "width": 386,
+            "height": 853
+          }
+        },
+        {
+          "action": "rotate",
+          "data": -4
+        },
+        {
+          "action": "crop",
+          "data": {
+            "auto": true
+          }
+        },
+        {
+          "action": "resize",
+          "data": {
+            "width": 312,
+            "height": 792
+          }
+        }
+      ],
+      "location": {
+        "left": 2592,
+        "top": 60
+      }
+    },
+    {
+      "id": "placket-1",
+      "artwork": "front",
+      "piece": "placket-1",
+      "steps": [
+        {
+          "action": "mask",
+          "data": "front-12.png"
+        },
+        {
+          "action": "crop",
+          "data": {
+            "left": 3994,
+            "top": 2513,
+            "width": 410,
+            "height": 2551
+          }
+        },
+        {
+          "action": "resize",
+          "data": {
+            "width": 390,
+            "height": 2430
+          }
+        }
+      ],
+      "location": {
+        "left": 54,
+        "top": 2509
+      }
+    },
+    {
+      "id": "flap-2",
+      "artwork": "front",
+      "piece": "flap-2",
+      "steps": [
+        {
+          "action": "mask",
+          "data": "front-21.png"
+        },
+        {
+          "action": "crop",
+          "data": {
+            "left": 4988,
+            "top": 3995,
+            "width": 385,
+            "height": 853
+          }
+        },
+        {
+          "action": "rotate",
+          "data": 4
+        },
+        {
+          "action": "crop",
+          "data": {
+            "auto": true
+          }
+        },
+        {
+          "action": "resize",
+          "data": {
+            "width": 312,
+            "height": 791
+          }
+        }
+      ],
+      "location": {
+        "left": 5447,
+        "top": 3983
+      }
+    },
+    {
+      "id": "placket-2",
+      "artwork": "front",
+      "piece": "placket-2",
+      "steps": [
+        {
+          "action": "mask",
+          "data": "front-22.png"
+        },
+        {
+          "action": "crop",
+          "data": {
+            "left": 4203,
+            "top": 2512,
+            "width": 409,
+            "height": 2552
+          }
+        },
+        {
+          "action": "resize",
+          "data": {
+            "width": 390,
+            "height": 2430
+          }
+        }
+      ],
+      "location": {
+        "left": 5811,
+        "top": 2509
+      }
+    },
+    {
+      "id": "hem-1",
+      "artwork": "front",
+      "piece": "hem-1",
+      "steps": [
+        {
+          "action": "mask",
+          "data": "front-31.png"
+        },
+        {
+          "action": "crop",
+          "data": {
+            "left": 3931,
+            "top": 5002,
+            "width": 473,
+            "height": 752
+          }
+        },
+        {
+          "action": "resize",
+          "data": {
+            "width": 387,
+            "height": 615
+          }
+        }
+      ],
+      "location": {
+        "left": 1585,
+        "top": 3005
+      }
+    },
+    {
+      "id": "hem-2",
+      "artwork": "front",
+      "piece": "hem-2",
+      "steps": [
+        {
+          "action": "mask",
+          "data": "front-41.png"
+        },
+        {
+          "action": "crop",
+          "data": {
+            "left": 4199,
+            "top": 4999,
+            "width": 473,
+            "height": 755
+          }
+        },
+        {
+          "action": "resize",
+          "data": {
+            "width": 387,
+            "height": 617
+          }
+        }
+      ],
+      "location": {
+        "left": 1519,
+        "top": 3837
+      }
+    },
+    {
+      "id": "waist",
+      "artwork": "front",
+      "piece": "waist",
+      "steps": [
+        {
+          "action": "mask",
+          "data": "waist-1.png"
+        },
+        {
+          "action": "crop",
+          "data": {
+            "left": 3727,
+            "top": 1012,
+            "width": 4537,
+            "height": 754
+          }
+        },
+        {
+          "action": "resize",
+          "data": {
+            "width": 3708,
+            "height": 616
+          }
+        }
+      ],
+      "location": {
+        "left": 53,
+        "top": 5044
+      }
+    },
+    {
+      "id": "neck",
+      "artwork": "front",
+      "piece": "neck",
+      "steps": [
+        {
+          "action": "mask",
+          "data": "neck-1.png"
+        },
+        {
+          "action": "crop",
+          "data": {
+            "left": 321,
+            "top": 1903,
+            "width": 1983,
+            "height": 441
+          }
+        },
+        {
+          "action": "resize",
+          "data": {
+            "width": 1888,
+            "height": 420
+          }
+        }
+      ],
+      "location": {
+        "left": 54,
+        "top": 5694
+      }
+    },
+    {
+      "id": "sleeve-1",
+      "artwork": "front",
+      "piece": "sleeve-1",
+      "steps": [
+        {
+          "action": "mask",
+          "data": "sleeve-1.png"
+        },
+        {
+          "action": "crop",
+          "data": {
+            "left": 298,
+            "top": 2465,
+            "width": 2036,
+            "height": 2609
+          }
+        },
+        {
+          "action": "resize",
+          "data": {
+            "width": 1939,
+            "height": 2485
+          }
+        }
+      ],
+      "location": {
+        "left": 3603,
+        "top": 2458
+      }
+    },
+    {
+      "id": "sleeve-2",
+      "artwork": "front",
+      "piece": "sleeve-2",
+      "steps": [
+        {
+          "action": "mask",
+          "data": "sleeve-2.png"
+        },
+        {
+          "action": "crop",
+          "data": {
+            "left": 9654,
+            "top": 2456,
+            "width": 2036,
+            "height": 2610
+          }
+        },
+        {
+          "action": "rotate",
+          "data": 180
+        },
+        {
+          "action": "resize",
+          "data": {
+            "width": 1939,
+            "height": 2486
+          }
+        }
+      ],
+      "location": {
+        "left": 2824,
+        "top": 60
+      }
+    },
+    {
+      "id": "cuff-1",
+      "artwork": "front",
+      "piece": "cuff-1",
+      "steps": [
+        {
+          "action": "mask",
+          "data": "sleeve-11.png"
+        },
+        {
+          "action": "crop",
+          "data": {
+            "left": 684,
+            "top": 5005,
+            "width": 1266,
+            "height": 789
+          }
+        },
+        {
+          "action": "resize",
+          "data": {
+            "width": 988,
+            "height": 616
+          }
+        }
+      ],
+      "location": {
+        "left": 3817,
+        "top": 5044
+      }
+    },
+    {
+      "id": "cuff-2",
+      "artwork": "front",
+      "piece": "cuff-2",
+      "steps": [
+        {
+          "action": "mask",
+          "data": "sleeve-21.png"
+        },
+        {
+          "action": "crop",
+          "data": {
+            "left": 10037,
+            "top": 4995,
+            "width": 1270,
+            "height": 789
+          }
+        },
+        {
+          "action": "resize",
+          "data": {
+            "width": 991,
+            "height": 616
+          }
+        }
+      ],
+      "location": {
+        "left": 4860,
+        "top": 5044
+      }
+    },
+    {
+      "id": "pocket-1",
+      "artwork": "front",
+      "piece": "pocket-1",
+      "steps": [
+        {
+          "action": "mask",
+          "data": "pocket-1.png"
+        },
+        {
+          "action": "crop",
+          "data": {
+            "left": 3420,
+            "top": 3960,
+            "width": 1015,
+            "height": 1075
+          }
+        },
+        {
+          "action": "rotate",
+          "data": 180
+        },
+        {
+          "action": "resize",
+          "data": {
+            "width": 967,
+            "height": 1024
+          }
+        }
+      ],
+      "location": {
+        "left": 497,
+        "top": 3793
+      }
+    },
+    {
+      "id": "pocket-2",
+      "artwork": "front",
+      "piece": "pocket-2",
+      "steps": [
+        {
+          "action": "mask",
+          "data": "pocket-2.png"
+        },
+        {
+          "action": "crop",
+          "data": {
+            "left": 4174,
+            "top": 3963,
+            "width": 1014,
+            "height": 1075
+          }
+        },
+        {
+          "action": "rotate",
+          "data": 180
+        },
+        {
+          "action": "resize",
+          "data": {
+            "width": 965,
+            "height": 1024
+          }
+        }
+      ],
+      "location": {
+        "left": 565,
+        "top": 2725
+      }
+    }
+  ]
+}

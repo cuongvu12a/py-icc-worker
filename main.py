@@ -16,25 +16,26 @@ def read_csv(file_path):
 
 @wrapper_monitor()
 def main(debug: bool = False):
-    asset_dir = '2XL'
-    file_path = '5071404_1_front.png'
-    # output_dir = 'output/opencv'
-    output_dir = 'output/wand'
+    asset_dir = 'L'
+    file_path = '5346029-3-artwork.png'
+    output_dir = 'output/opencv'
+    # output_dir = 'output/wand'
     
     os.makedirs(output_dir, exist_ok=True)
     
     # canvas = run_multi_pipeline(asset_dir, file_path, OpenCVProcessor, debug=debug, output_dir=output_dir)
-    # canvas = run_multi_pipeline(asset_dir, file_path, WandProcessor, debug=debug , output_dir=output_dir)
-    # canvas.save(os.path.join(output_dir, "final.tif"), preview=False)
-
+    canvas = run_multi_pipeline(asset_dir, file_path, WandProcessor, debug=debug , output_dir=output_dir)
+    canvas.save(os.path.join(output_dir, "final.tif"), preview=False)
+    
+    return
     dir_path = os.path.join('.downloads')
     data = read_csv('temp.csv')
     for row in data:
         item = row['item']
         print(f'Processing item: {item}')
         file_path = os.path.join(dir_path, f'{item}_front.png')
-        type = row['type']
-        size = row['size']
+        type = row['type'].upper()
+        size = row['size'].upper()
         asset_dir = os.path.join('assets', type, size)
         
         # print(f'OpenCVProcessor processing for item: {item}')
@@ -45,9 +46,8 @@ def main(debug: bool = False):
         print(f'WandProcessor processing for item: {item}')
         output_wand_path = os.path.join(output_dir, f'{item}_wand.tif')
         canvas_wand = run_multi_pipeline(asset_dir, file_path, WandProcessor)
-        print(f'Saving WandProcessor output for item: {item}')
         canvas_wand.save(output_wand_path, preview=False)
         print (f'Finished processing item: {item}')
 
 if __name__ == "__main__":
-    main(debug=True)
+    main(debug=False)

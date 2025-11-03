@@ -1,82 +1,83 @@
-from multiprocessing import Process, Queue, Event
+from multiprocessing import Process, Event
 import time
 import psutil
 from datetime import datetime
 
-def monitor_cpu_mem(stop_event, result_queue, poll_interval=0.05):
-    cpu_data = []
-    mem_data = []
-    while not stop_event.is_set():
-        try:
-            cpu_data.append(psutil.cpu_percent(interval=None))
-            mem_data.append(psutil.virtual_memory().percent)
-            time.sleep(poll_interval)
-        except Exception:
-            break
-    # Try to return results without blocking the child process.
-    # Use non-blocking put so the child won't hang if the parent isn't
-    # reading the queue (avoids deadlocks on some platforms/start-methods).
+def monitor_cpu_mem(stop_event, func_name, poll_interval=0.05, log_file=None):
+    import psutil, time
+    from datetime import datetime
+
+    cpu_data_percent = []
+    mem_data_percent = []
+    start = datetime.now()
+
+    total_mem_gb = psutil.virtual_memory().total / (1024**3)
+
     try:
-        result_queue.put_nowait((cpu_data, mem_data))
+        while not stop_event.is_set():
+            cpu_percent = psutil.cpu_percent(interval=poll_interval)
+            mem_info = psutil.virtual_memory()
+            mem_percent = mem_info.percent
+
+            cpu_data_percent.append(cpu_percent)
+            mem_data_percent.append(mem_percent)
     except Exception:
-        # If putting fails for any reason, just ignore and exit.
         pass
 
-def wrapper_monitor(only_time=False):
+    end = datetime.now()
+    duration_min = (end - start).total_seconds() / 60
+
+    avg_cpu_percent = sum(cpu_data_percent)/len(cpu_data_percent) if cpu_data_percent else 0
+    avg_mem_percent = sum(mem_data_percent)/len(mem_data_percent) if mem_data_percent else 0
+    max_cpu_percent = max(cpu_data_percent) if cpu_data_percent else 0
+    max_mem_percent = max(mem_data_percent) if mem_data_percent else 0
+
+    avg_mem_gb = avg_mem_percent / 100 * total_mem_gb
+    max_mem_gb = max_mem_percent / 100 * total_mem_gb
+
+    msg = (
+        f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] "
+        f"Function '{func_name}' executed in {duration_min:.2f} phút | "
+        f"CPU avg={avg_cpu_percent:.1f}%, "
+        f"max={max_cpu_percent:.1f}% | "
+        f"RAM avg={avg_mem_percent:.1f}% ({avg_mem_gb:.2f}/{total_mem_gb:.1f}GB), "
+        f"max={max_mem_percent:.1f}% ({max_mem_gb:.2f}/{total_mem_gb:.1f}GB)"
+    )
+
+    if log_file:
+        with open(log_file, "a", encoding="utf-8") as f:
+            f.write(msg + "\n")
+    else:
+        print(msg)
+
+def wrapper_monitor(only_time=False, log_file=None):
     def decorator(func):
         def wrapper(*args, **kwargs):
-            start = datetime.now()
-            q = None
-            stop_event = None
+            stop_event = Event()
             monitor_proc = None
+
             if not only_time:
-                q = Queue()
-                stop_event = Event()
-                monitor_proc = Process(target=monitor_cpu_mem, args=(stop_event, q))
+                monitor_proc = Process(
+                    target=monitor_cpu_mem,
+                    args=(stop_event, func.__name__),
+                    kwargs={"poll_interval": 0.1, "log_file": log_file},
+                    daemon=True,
+                )
                 monitor_proc.start()
 
+            start = datetime.now()
             result = func(*args, **kwargs)
+            end = datetime.now()
 
             if not only_time:
-                stop_event.set()  # signal monitor dừng
-                monitor_proc.join(timeout=5)
+                stop_event.set()
+                monitor_proc.join(timeout=2)
                 if monitor_proc.is_alive():
                     monitor_proc.terminate()
+            else:
+                duration = (end - start).total_seconds() / 60
+                print(f"Function '{func.__name__}' executed in {duration:.2f} phút")
 
-                cpu_data = []
-                mem_data = []
-                while True:
-                    try:
-                        data = q.get_nowait()
-                        cpu_data, mem_data = data
-                    except:
-                        break
-
-                # Close the queue and wait for the feeder thread to finish
-                # so we don't leave background threads that can keep the
-                # process alive on some platforms.
-                try:
-                    q.close()
-                except Exception:
-                    pass
-                try:
-                    q.join_thread()
-                except Exception:
-                    pass
-
-                avg_cpu = sum(cpu_data)/len(cpu_data) if cpu_data else 0
-                avg_mem = sum(mem_data)/len(mem_data) if mem_data else 0
-                max_cpu = max(cpu_data) if cpu_data else 0
-                max_mem = max(mem_data) if mem_data else 0
-
-            end = datetime.now()
-            duration = end - start
-            print(f"Function {func.__name__} took {duration}")
-            if not only_time:
-                print(f"Average CPU usage: {avg_cpu:.2f}%")
-                print(f"Average Memory usage: {avg_mem:.2f}%")
-                print(f"Max CPU usage: {max_cpu:.2f}%")
-                print(f"Max Memory usage: {max_mem:.2f}%")
             return result
         return wrapper
     return decorator

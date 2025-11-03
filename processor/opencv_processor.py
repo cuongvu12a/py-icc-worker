@@ -154,6 +154,8 @@ class OpenCVProcessor(ImageProcessor):
             img.format = 'tiff'
             img.colorspace = colorspace
             img.alpha_channel = 'activate'
+            img.units = 'pixelsperinch'
+            img.resolution = (100, 100)
 
             # write CMYK channels
             img.import_pixels(channel_map=channel_map, data=channels_bytes)

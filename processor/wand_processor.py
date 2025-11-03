@@ -71,6 +71,8 @@ class WandProcessor(ImageProcessor):
 
     def save(self, path, preview=False):
         self.image.profiles['icc'] = self.icc_profile
+        self.image.units = 'pixelsperinch'
+        self.image.resolution = (100, 100)
         self.image.compression = 'zip'
         self.image.save(filename=path)
         
